@@ -8,10 +8,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Insta:
+    count = 0
     def __init__(self, username, password):
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Edge()
         self.username = username
-        self.password = password
+        self.password = password 
     
     def login(self):
         self.browser.maximize_window()
@@ -26,18 +27,20 @@ class Insta:
         WebDriverWait(self.browser, 30).until(EC.url_contains("accounts"))
         
         self.browser.get(f"https://www.instagram.com/{self.username}/")
-        
+
     def scroll_until_end(self, scroll_box):
+        action = ActionChains(self.browser)
         last_height = self.browser.execute_script("return arguments[0].scrollHeight", scroll_box)
-        
+
         while True:
             self.browser.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll_box)
             time.sleep(2)
             new_height = self.browser.execute_script("return arguments[0].scrollHeight", scroll_box)
+            
             if new_height == last_height:
                 break
-            last_height = new_height           
-        
+            last_height = new_height
+
     def getFollow(self):
         try:
             WebDriverWait(self.browser, 30).until(EC.url_contains(f"{self.username}"))
@@ -48,9 +51,7 @@ class Insta:
             self.browser.get(f"https://www.instagram.com/{self.username}/")
 
         time.sleep(2)
-        dialog = WebDriverWait(self.browser, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='dialog']")))
-        
-        # dialog.send_keys(Keys.END)
+        dialog = WebDriverWait(self.browser, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div.xyi19xy.x1ccrb07.xtf3nb5.x1pc53ja.x1lliihq.x1iyjqo2.xs83m0k.xz65tgg.x1rife3k.x1n2onr6")))
 
         self.scroll_until_end(dialog)
 
@@ -59,10 +60,12 @@ class Insta:
         
         with open("follows.txt", "w", encoding='utf-8') as file:
             for name in names:
+                self.count +=1
                 file.write(name + "\n")
+                
     
     def getFollowers(self):
-        
+        self.count = 0
         self.browser.get(f"https://www.instagram.com/{self.username}/")
         
         try:
@@ -74,8 +77,8 @@ class Insta:
             self.browser.get(f"https://www.instagram.com/{self.username}/")
 
         time.sleep(2)
-        dialog = WebDriverWait(self.browser, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='dialog']")))
-
+        dialog = WebDriverWait(self.browser, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div.xyi19xy.x1ccrb07.xtf3nb5.x1pc53ja.x1lliihq.x1iyjqo2.xs83m0k.xz65tgg.x1rife3k.x1n2onr6")))
+        
         self.scroll_until_end(dialog)
         
         time.sleep(2)
@@ -84,6 +87,7 @@ class Insta:
         with open("followers.txt", "w", encoding='utf-8') as file:
             names = [name.text for name in links if name.text != '']
             for name in names:
+                self.count += 1
                 file.write(name + "\n")
     
     def compare_follows_and_followers(self):
