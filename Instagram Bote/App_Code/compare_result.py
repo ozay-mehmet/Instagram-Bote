@@ -7,7 +7,7 @@ class CompareWindow(QWidget):
         self.initUI(data)
 
     def initUI(self, data):
-        self.setWindowTitle("Comparison Results")
+        self.setWindowTitle("Karşılaştırma Sonuçları")
         
         layout = QVBoxLayout()
         self.result_text = QTextEdit(self)
