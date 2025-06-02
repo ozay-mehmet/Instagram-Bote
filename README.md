@@ -8,8 +8,6 @@ Bu proje, kullanıcıların Instagram hesaplarındaki takipçi ve takip ettikler
 - **Takipçi ve Takip Edilenlerin Alınması**: Otomatik olarak tüm liste çekilir.
 - **Kullanıcı Arayüzü (GUI)**: PyQt5 kullanılarak kullanıcı dostu bir arayüz sağlanmıştır.
 - **Farklılık Analizi**: Takip etmeyenleri veya geri takip yapmayanları analiz ederek gösterir.
-- **Excel Desteği**: Sonuçlar `.xlsx` dosyası olarak dışa aktarılır.
-- **Dark Mode**: Karanlık tema desteği mevcuttur.
 
 ## Ekran Görüntüsü
 
