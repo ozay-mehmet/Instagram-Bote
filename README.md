@@ -13,12 +13,12 @@ Bu proje, kullanıcıların Instagram hesaplarındaki takipçi ve takip ettikler
 
 ## Ekran Görüntüsü
 
-> Uygulamanın arayüzünü çalıştırmak için `main.py` dosyasını çalıştırın.
+> Uygulamanın arayüzünü çalıştırmak için `login.py` dosyasını çalıştırın.
 
 ## Kullanım
 
 1. Gerekli kütüphanelerin yüklü olduğundan emin olun (aşağıda belirtildi).
-2. `main.py` dosyasını çalıştırarak uygulamayı başlatın.
+2. `login.py` dosyasını çalıştırarak uygulamayı başlatın.
 3. Kullanıcı adı ve şifrenizi girerek oturum açın.
 4. Takipçi ve takip edilen listelerini çekin.
 5. Farklılıkları analiz ederek sonuçları görüntüleyin veya dışa aktarın.
@@ -44,17 +44,14 @@ Ayrıca, tarayıcı sürümünüze uygun bir **WebDriver** (ör. Chrome için ch
 ## Dosya Yapısı
 
 - `login.py`: Uygulamanın başlangıç dosyası.
-- `gui.py`: PyQt5 arayüz bileşenleri burada tanımlanır.
+- `compare_result.py`: Sonuçları karşılaştırır
 - `insta.py`: Selenium ile Instagram işlemlerini otomatikleştiren bot mantığı.
-- `farkbul.py`: Takipçi/takip edilen analiz algoritmaları.
-- `darkstyle.qss`: Karanlık tema stil dosyası.
-- `output.xlsx`: Sonuçların dışa aktarım dosyası.
 
 ## Kurulum
 
 ```bash
 git clone https://github.com/ozay-mehmet/Instagram-Bote.git
-cd APP-Code
+cd App_Code
 python login.py
 ```
 
